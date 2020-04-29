@@ -1,5 +1,6 @@
 # import libraries to turn our images in a useable form
 import numpy as np
+import pandas as pd
 import os
 import cv2
 
@@ -119,3 +120,38 @@ def get_pickle(X_file, y_file):
     pickle_y = open(y_file, 'rb')
     y = np.array(pickle.load(pickle_y))
     return X,y
+
+def get_precisions(models, X_gs_test, y_gs_test, X_rgb_test, y_rgb_test):
+    '''
+    Inputs: (models, X_gs_test, y_gs_test, X_rgb_test, y_rgb_test)
+    
+    Outputs: DataFrame of precisions. Columns are model names and indices
+             are fruit labels. Values are the precision scores. 
+    
+    models:
+        List of fitted models. In this case we only made 10. They are ordered
+        in grayscale fitted models first and then rgb fitted models.
+    X_gs_test:
+        X test set data already formatted to make predictions. This is the
+        grayscale data.
+    y_gs_test:
+        y test set data/labels to calculate classification metrics. This is the
+        grayscale labels.
+    X_rgb_test:
+        Same as X_gs_test but for color data.
+    y_rgb_test:
+        Same as y_gs_test but for color data.
+    '''
+    columns = ['Model_'+str(i+1) for i in range(10)]
+    df = pd.DataFrame(index=categories,columns=columns)
+    for model in models[:5]:
+        predictions = model.predict_classes(X_gs_test)
+        cm_gs = confusion_matrix(y_gs_test, predictions, normalize='pred')
+        precisions = [cm_gs[i][i] for i in range(15)]
+        df[columns[models.index(model)]] = precisions
+    for m in models[5:]:
+        predictions = m.predict_classes(X_rgb_test)
+        cm_rgb = confusion_matrix(y_rgb_test, predictions, normalize='pred')
+        precisions = [cm_rgb[i][i] for i in range(15)]
+        df[columns[models.index(m)]] = precisions
+    return df
