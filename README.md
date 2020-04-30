@@ -105,8 +105,8 @@ I decided to pickle the data I created to save time.
 I had to save some of my pickled data on a 
 <a href='https://drive.google.com/drive/folders/1tWAg1tEks6IS2iB9W0lfBkJ2NOJIhkJF?usp=sharing'>drive folder</a>.
 Feel free to grab the pickled data from this drive folder if you don't want to
-run the data creation functions.
+run the data creation functions. Here is a link to my
+<a href='https://drive.google.com/open?id=1UhInc0PoLSJkbdqiJZKzhGiTKV3nXWLd7xq8ubXBl_4'>powerpoint</a>.
 
 
 * Add EDA
-* Add Link to Presentation
