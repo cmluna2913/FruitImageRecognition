@@ -34,9 +34,27 @@ into different subcategories, such as apples having some of the following
 subcategories: red apples, green apples, and yellow apples. There does not seem
 to be a huge discretion in terms of the conditions of the food collected.
 
-<img src="Images/fruit_dist_dark.png" alt="Distribution of Fruit" width="600" height="400" />
-## Walkthrough
+<img src="Images/fruit_dist.png" alt="Distribution of Fruit" width="600" height="400" />
 
+## Walkthrough
+There are 3 key files within this repo.
+* *Model_Building.ipynb*
+      The notebook where I create my data, transform it, and run several models.
+      There are 10 models within this notebook that give insight as to how I
+      proceeded with creating layers for my neural networks. I also take a look
+      at some of the classification metrics that helped me decide the next steps
+      to take and why I chose the model that I did.
+* *EDA_and_Visualizations.ipynb*
+      In this notebook I quickly explore the classifications that I am looking
+      at. I also take a look into the predictions my best model makes. I breakdown
+      the first and last layer of my CNN model to visualize how it is working.
+* *data_creation.py*
+      The backbone of my project. This file contains all the necessary functions
+      that allow me to import images in either a grayscale or rgb format. There
+      are also functions that package my data into pickle files as well as let
+      me retrieve the information from these pickle files. The final function
+      is a function that retrieves the precisions for all my models and places
+      the results into a dataframe.
 
 ## Approach
 I will be creating models using neural networks. As I input my information, I 
@@ -54,8 +72,8 @@ where users will only have to edit tags before posting their potential donation.
 Other metrics, such as recall and f1-score, will still help in the improvement 
 of the models.
 
-First I will input grayscale data to see how it performs. Color is a big factor
-so then I will work with color images. This is to show a comparison between models
+First I will input grayscale data to see how it performs. Since color is a big factor,
+I will work with color images to help with performance. I include a comparison between models
 that use grayscale images and color images.
 
 ## Current Conclusion
@@ -67,16 +85,66 @@ Sequential([Conv2D(85, kernel_size=(1), activation='relu'),
             Flatten(input_shape=(50,50)),
             Dense(15, activation='softmax', activity_regularizer=regularizers.l1(0.02))])
 ```
-This model has a weighted precision of 93.83%. Our model does well in predicted
+<img src="Images/model.png" alt="Structure of CNN Model" width="300" height="200" />
+
+This model has a weighted precision of 93.83%. Our model does well in predicting
 most of the fruits, with the exception of a few specific fruits. For example,
 apples, bananas, and muskmelons have a relatively low precision compared to the
 other fruits. This could be because under specific lighting and positiong conditions,
 they potentially appear to have the same color. Bananas can mitigate this a little
 due to its irregular shape. However, apples and muskmelons appear very similar
-to one another, especially when apples are of a certain color. Further investigation
+to one another when muskmelons aren't fully grown, 
+especially when apples are of a similar color. Further investigation
 and experimentation will have to be implemented to help our model distinguish
 between these fruits.
 
+## Quick Visualization
+My model takes a 50x50 pixel image and transforms it into an array with 3 channels
+for rgb. Let us take a pitaya.
+
+<img src='Images/example.png' alt='Pitaya' width='600' height='600' />
+
+Our convolutional layer breaks it down into 85 components since it consists of
+85 neurons. Each neuron is able to pick up on certain pictures of our picture.
+For example, it can pick up on certain parts of our pitaya. However, it might
+not pick up on certain features or it even notices certain parts of our background.
+For instance, it notices the shine from the metal tray.
+
+<img src='Images/example_breakdown.png' alt='Breakdown of 10 Neurons' width='800' height='700' />
+
+The dropout layer helps with preventing our model from overfitting. In general, it
+drops a certain percentage of features randomly so that our model may not rely
+on specific features too much on predicting fruit. Then this data is passed through
+a flattening layer so that I can pass it through my final layer.
+
+My final layer uses a 'softmax' activation function which calculates probabilites
+of what class the information may fall under and outputs a number as to which class
+it most likely is. It returns a number from 0 to 14, all which represent
+the 15 classes of fruit in the data. In our pitaya example, it returns the number
+11 which corresponds to the classification of 'Pitaya'.
+
+<img src='Images/output_layer.png' alt='Output Layer' width='800' height='600' />
+
+
+## EDA of Results
+First I will look at the distribution of the model's inputs and then the distribution
+of the model's predictions. After running my test set through my model, I seem
+to have a very similar distribution for the true labels compared to the predicted.
+This shows that my model is staying pretty much on track for predicting the
+correct labels.
+
+<img src='Images/true_pred_spread.png' alt='Spread of True and Predicted Labels'
+     width='800' height='600' />
+
+I am going to look at the incorrect predictions for each class. Then I'm going
+to convert those quantities as percentages. The columns are the true label
+and the indicies are the predicted label. Each value is the percent that the
+predicted label is of incorrect predictions for that class. For example,
+pears take up about 26.22% of incorrect predictions for apples. Taking a look
+at this can help me figure out what features the model is focusing on when I return
+to look at those features.
+
+<img src='Images/incorrect.png' alt='Incorrect Prediction Percentages' width='800' height='600' />
 
 ## Next Steps
 There are a few objectives I can work towards next. 
@@ -107,6 +175,3 @@ I had to save some of my pickled data on a
 Feel free to grab the pickled data from this drive folder if you don't want to
 run the data creation functions. Here is a link to my
 <a href='https://drive.google.com/open?id=1UhInc0PoLSJkbdqiJZKzhGiTKV3nXWLd7xq8ubXBl_4'>powerpoint</a>.
-
-
-* Add EDA

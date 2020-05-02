@@ -8,6 +8,9 @@ import cv2
 import pickle
 import random
 
+#visualization
+import matplotlib.pyplot as plt
+
 def data_creation(img_size, flag, categories, data_dir):
     '''
     Inputs: (img_size, flag, categories, data_dir)
@@ -155,3 +158,20 @@ def get_precisions(models, X_gs_test, y_gs_test, X_rgb_test, y_rgb_test):
         precisions = [cm_rgb[i][i] for i in range(15)]
         df[columns[models.index(m)]] = precisions
     return df
+
+def show_img(path, img_size):
+    '''
+    Inputs: (path, img_size)
+    
+    Outputs: Plots a colored image at the given path.
+    
+    path:
+        Directory path for the image as a string.
+    img_size:
+        Image size as an integer n. Image will return as an nxn resolution.
+    '''
+    img_arr = cv2.imread(path, 1)
+    img_rgb = cv2.cvtColor(img_arr, cv2.COLOR_BGR2RGB)
+    resize_img_arr=cv2.resize(img_rgb, (img_size,img_size))
+    plt.imshow(resize_img_arr)
+    return resize_img_arr
