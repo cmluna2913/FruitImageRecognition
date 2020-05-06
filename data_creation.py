@@ -10,6 +10,7 @@ import random
 
 #visualization
 import matplotlib.pyplot as plt
+from sklearn.metrics import confusion_matrix
 
 def data_creation(img_size, flag, categories, data_dir):
     '''
@@ -124,6 +125,10 @@ def get_pickle(X_file, y_file):
     y = np.array(pickle.load(pickle_y))
     return X,y
 
+categories = ['Apple', 'Banana', 'Carambola', 'Guava', 'Kiwi', 'Mango',
+              'Muskmelon', 'Orange', 'Peach', 'Pear', 'Persimmon', 'Pitaya',
+              'Plum', 'Pomegranate', 'Tomato']
+
 def get_precisions(models, X_gs_test, y_gs_test, X_rgb_test, y_rgb_test):
     '''
     Inputs: (models, X_gs_test, y_gs_test, X_rgb_test, y_rgb_test)
@@ -149,12 +154,12 @@ def get_precisions(models, X_gs_test, y_gs_test, X_rgb_test, y_rgb_test):
     df = pd.DataFrame(index=categories,columns=columns)
     for model in models[:5]:
         predictions = model.predict_classes(X_gs_test)
-        cm_gs = confusion_matrix(y_gs_test, predictions, normalize='pred')
+        cm_gs = confusion_matrix(y_gs_test, predictions)
         precisions = [cm_gs[i][i] for i in range(15)]
         df[columns[models.index(model)]] = precisions
     for m in models[5:]:
         predictions = m.predict_classes(X_rgb_test)
-        cm_rgb = confusion_matrix(y_rgb_test, predictions, normalize='pred')
+        cm_rgb = confusion_matrix(y_rgb_test, predictions)
         precisions = [cm_rgb[i][i] for i in range(15)]
         df[columns[models.index(m)]] = precisions
     return df
