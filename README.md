@@ -68,10 +68,12 @@ There are a few key files and folders within this repo.
       proceeded with creating layers for my neural networks. I also take a look
       at some of the classification metrics that helped me decide the next steps
       to take and why I chose the model that I did.
-- [*EDA_and_Visualizations.ipynb*](https://github.com/cmluna2913/FruitImageRecognition/blob/master/EDA_and_Vizualizations.ipynb)
+      
+- [*EDA_and_Visualizations.ipynb*](https://github.com/cmluna2913/FruitImageRecognition/blob/master/EDA_and_Visualizations.ipynb)
       In this notebook I quickly explore the classifications that I am looking
       at. I also take a look into the predictions my best model makes. I breakdown
       the first and last layer of my CNN model to visualize how it is working.
+      
 - [*data_creation.py*](https://github.com/cmluna2913/FruitImageRecognition/blob/master/data_creation.py)
       The backbone of my project. This file contains all the necessary functions
       that allow me to import images in either a grayscale or rgb format. There
@@ -79,16 +81,20 @@ There are a few key files and folders within this repo.
       me retrieve the information from these pickle files. The final function
       is a function that retrieves the precisions for all my models and places
       the results into a dataframe.
+      
 - [*Models*](https://github.com/cmluna2913/FruitImageRecognition/blob/master/Models)
       This is a folder containing the necessary files for model importing. Each
       model is saved between 2 files. One is a .json file that saves the architecture
       of the model. The other file is a .h5 which saves the weights for the given
       model. They are all numbered to correspond with their respective model,
       and some steps on importing these models is in EDA_and_Visualizations.ipynb.
+      
 - [*Images*](https://github.com/cmluna2913/FruitImageRecognition/blob/master/Images)
       A folder of images I saved and used.
+      
 - [*Fruit_Classifications.pdf*](https://github.com/cmluna2913/FruitImageRecognition/blob/master/Fruit_Classifications.pdf)
       A pdf of the powerpoint presentation I made for this project.
+      
 - [*GoogleDrive.md*](https://github.com/cmluna2913/FruitImageRecognition/blob/master/GoogleDrive.md)
       A markdown file containing a walkthrough of files I uploaded on a google drive.
       This drive contains the .pickle files I created since some of them were to
