@@ -183,11 +183,12 @@ the 15 classes of fruit in the data. In our pitaya example, it returns the numbe
 ---
 
 ## EDA of Results <a name='EDA'></a>
-First I will look at the distribution of the model's inputs and then the distribution
-of the model's predictions. After running my test set through my model, I seem
-to have a very similar distribution for the true labels compared to the predicted.
-This shows that my model is staying pretty much on track for predicting the
-correct labels.
+I am taking a look at the diferences in the number of predictions for each label.
+After running my test set through my model, I can see that the model predicts more
+apple then there actually are and less of other labels. This is most likely due to
+the fact that apple is the majority class in the data set. However, looking at
+classification metrics, the model appears to do well in correctly predicting
+most of the fruit labels.
 
 <img src='Images/true_pred_spread.png' alt='Spread of True and Predicted Labels'
      width='800' height='600' />
