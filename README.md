@@ -78,9 +78,7 @@ There are a few key files and folders within this repo.
       The backbone of my project. This file contains all the necessary functions
       that allow me to import images in either a grayscale or rgb format. There
       are also functions that package my data into pickle files as well as let
-      me retrieve the information from these pickle files. The final function
-      is a function that retrieves the precisions for all my models and places
-      the results into a dataframe.
+      me retrieve the information from these pickle files.
       
 - [*Models*](https://github.com/cmluna2913/FruitImageRecognition/blob/master/Models)
       This is a folder containing the necessary files for model importing. Each
