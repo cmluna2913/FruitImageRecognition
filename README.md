@@ -62,19 +62,17 @@ There are a few key files and folders within this repo.
       models and their results. Use this to re-create the environment used. Use
       the notebooks and py file as steps to re-create the given results.
       
-      In order create this environment, navigate to the root directory of this
-      repo and run this line in your terminal.
+    In order create this environment, navigate to the root directory of this
+    repo and run this line in your terminal.
       
-```python
-conda env create -n FruitRec environment.yml
-```
-
-Then use
-
-```python
-activate FruitRec
-```
-to activate the environment.
+    ```python
+    conda env create -n FruitRec environment.yml
+    ```
+    Then use
+    ```python
+    activate FruitRec
+    ```
+    to activate the environment.
 
 - [*Model_Building.ipynb*](https://github.com/cmluna2913/FruitImageRecognition/blob/master/Model_Building.ipynb)
       The notebook where I create my data, transform it, and run several models.
