@@ -151,7 +151,7 @@ model_8 = Sequential([Conv2D(85, kernel_size=(1), activation='relu'),
 ```
 <img src="Images/model.png" alt="Structure of CNN Model" width="600" height="400" />
 
-This model has a weighted precision of 96.50%. Our model does well in predicting
+This model has a weighted precision of 96.33%. Our model does well in predicting
 most of the fruits, with the exception of a few specific fruits. For example,
 apples and muskmelons have a relatively low precision compared to the
 other fruits. This could be because under specific lighting and positiong conditions,
@@ -207,7 +207,7 @@ I am going to look at the incorrect predictions for each class. Then I'm going
 to convert those quantities as percentages. The columns are the true label
 and the indicies are the predicted label. Each value is the percent that the
 predicted label is of incorrect predictions for that class. For example,
-tomatoes take up about 43.75% of incorrect predictions for apples. Taking a look
+tomatoes take up about 28.37% of incorrect predictions for apples. Taking a look
 at this can help me figure out what features the model is focusing on when I return
 to look at those features.
 
