@@ -29,7 +29,7 @@ I felt that apps like this could benefit from a food image recognition system.
 A food image recognition system would help take some of the work away from the
 user when inputing information, as well as help generate
 tags that could help search results be more accurate. The tags would
-aslo be helping with keeping data organized and save some work from the
+also be helping with keeping data organized and save some work from the
 individuals that maintain the app. On top of that, the
 database and model would keep improving from user feedback as the
 database grows from user given images. To start a foundation for this, I will
