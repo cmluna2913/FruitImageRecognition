@@ -170,7 +170,7 @@ between these fruits.
 
 
 *Can you figure out which one is the muskmelon and which one is the apple?*
-<img src="Images/incorrect_prediction.png" alt="Example of an incorrect prediction" width="600" height="400"/>
+<img src="Images/incorrect_prediction.PNG" alt="Example of an incorrect prediction" width="600" height="400"/>
 
 ---
 
